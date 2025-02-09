@@ -1,13 +1,17 @@
 import numpy as np
 import pandas as pd
 
+
 def create_1d_array():
     """
     Create a 1D NumPy array with values [1, 2, 3, 4, 5]
     Returns:
-        numpy.ndarray: 1D array
+        numpy.ndarray: 1D array ([1, 2, 3, 4, 5])
     """
     pass
+
+def create_1d_array():
+    return np.array([1, 2, 3, 4, 5])
 
 def create_2d_array():
     """
