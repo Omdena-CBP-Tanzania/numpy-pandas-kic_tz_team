@@ -2,64 +2,90 @@ import numpy as np
 import pandas as pd
 
 def create_1d_array():
-    """
-    Create a 1D NumPy array with values [1, 2, 3, 4, 5]
-    Returns:
-        numpy.ndarray: 1D array
-    """
-    pass
+    array = np.array([1, 2, 3, 4, 5])
+    print(array)
+
+    
 
 def create_2d_array():
-    """
-    Create a 2D NumPy array with shape (3,3) of consecutive integers
-    Returns:
-        numpy.ndarray: 2D array
-    """
-    pass
+    array = np.arange(1, 10).reshape((3, 3))
+    print(array)
+    
 
 def array_operations(arr):
-    """
-    Perform basic array operations:
-    1. Calculate mean
-    2. Calculate standard deviation
-    3. Find max value
-    Returns:
-        tuple: (mean, std_dev, max_value)
-    """
-    pass
+    array = np.array([1, 2, 3, 4, 5])
+    # Calculate mean
+    mean = np.mean(array)
+
+    # Calculate standard deviation
+    std_dev = np.std(array)
+
+    # Find max value
+    max_value = np.max(array)
+
+    # Return the results as a tuple
+    results = (mean, std_dev, max_value)
+    print(results)
+
 
 def read_csv_file(filepath):
-    """
-    Read a CSV file using Pandas
-    Args:
-        filepath (str): Path to CSV file
-    Returns:
-        pandas.DataFrame: Loaded dataframe
-    """
-    pass
+   dataframe = pd.read_csv(filepath)
+   return dataframe
+filepath = 'C:\\Users\\K3LVIN BR0WN\\Documents\\test.csv'
+df = read_csv_file(filepath)
+print(df)
+
+
 
 def handle_missing_values(df):
-    """
-    Handle missing values in the DataFrame
-    1. Identify number of missing values
-    2. Fill missing values with appropriate method
-    Returns:
-        pandas.DataFrame: Cleaned dataframe
-    """
-    pass
+    missing_values_count = df.isnull().sum()
+    print("Missing values in each column:\n", missing_values_count)
+    
+   #Fill missing values with the mean of the column
+    df_cleaned = df.fillna(df.mean())
+    return df_cleaned
+
+data = {
+    'A': [1, 2, None, 4],
+    'B': [None, 2, 3, 4],
+    'C': [1, None, 3, 4]
+}
+df = pd.DataFrame(data)
+df_cleaned = handle_missing_values(df)
+print("Cleaned DataFrame:\n", df_cleaned)
+    
+
 
 def select_data(df):
-    """
-    Select specific columns and rows from DataFrame
-    Returns:
-        pandas.DataFrame: Selected data
-    """
-    pass
+   selected_data = df.loc[row_indices, col_names]
+   return selected_data
+
+data = {
+    'A': [1, 2, 3, 4],
+    'B': [5, 6, 7, 8],
+    'C': [9, 10, 11, 12]
+}
+df = pd.DataFrame(data)
+# Select rows with index 1 and 3, and columns 'A' and 'C'
+row_indices = [1, 3]
+col_names = ['A', 'C']
+selected_df = select_data(df, row_indices, col_names)
+
+
 
 def rename_columns(df):
-    """
-    Rename columns of the DataFrame
-    Returns:
-        pandas.DataFrame: DataFrame with renamed columns
-    """
-    pass
+    df_renamed = df.rename(columns=new_column_names)
+    return df_renamed
+
+data = {
+    'A': [1, 2, 3, 4],
+    'B': [5, 6, 7, 8],
+    'C': [9, 10, 11, 12]
+}
+df = pd.DataFrame(data)
+
+# Dictionary of new column names
+new_column_names = {'A': 'Juma', 'B': 'Rashid', 'C': 'Hamis'}
+df_renamed = rename_columns(df, new_column_names)
+print(df_renamed)
+
